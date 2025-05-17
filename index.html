@@ -3,54 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Штраф за детей, рожденных вне брака</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Подключаем Chart.js -->
+    <title>Анализ данных</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        /* Стили для улучшения отображения */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            font-size: 18px;
+            color: #555;
+        }
+
+        select, button {
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        select {
+            width: 200px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .plotly-graph-div {
+            width: 100%;
+            height: 400px;
+            margin-top: 40px;
+        }
+
+    </style>
 </head>
 <body>
 
 <div class="container">
-    <header>
-        <h1>Расчет штрафа за детей, рожденных вне брака</h1>
-        <p>Введите данные, чтобы рассчитать штраф и прогноз на будущее.</p>
-    </header>
+    <h1>Анализ данных по рождаемости и курсу валют</h1>
+    <!-- Ввод данных для прогноза -->
+    <label for="yearInput">Выберите год для анализа:</label>
+    <select id="yearInput">
+        <!-- Годы будут добавляться динамически -->
+    </select>
+    <button id="submitYearBtn">Отправить</button>
 
-    <div class="form-container">
-        <label for="year">Выберите год:</label>
-        <select id="year">
-            <!-- Опции будут добавляться динамически через JS -->
-        </select>
+    <!-- Место для таблиц -->
+    <table id="birthTable">
+        <thead>
+            <tr>
+                <th>Год</th>
+                <th>Процент рождений вне брака</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Таблицы будут заполняться динамически -->
+        </tbody>
+    </table>
 
-        <button onclick="calculatePenalty()">Рассчитать штраф</button>
-    </div>
+    <!-- Место для графиков -->
+    <div id="birthsPlot" class="plotly-graph-div"></div>
+    <div id="currencyPlot" class="plotly-graph-div"></div>
 
-    <!-- Контейнер для таблицы с данными -->
-    <div id="data-table-container">
-        <table id="data-table">
-            <thead>
-                <tr>
-                    <th>Год</th>
-                    <th>Дети, рожденные вне брака</th>
-                    <th>Общее количество рождений</th>
-                    <th>Процент детей вне брака</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Данные будут добавляться динамически через JavaScript -->
-            </tbody>
-        </table>
-    </div>
-
-    <!-- Контейнер для графика -->
-    <div id="chart-container">
-        <canvas id="myChart" width="400" height="200"></canvas>
-    </div>
-
-    <div id="result" class="result">
-        <!-- Результаты будут отображаться здесь -->
-    </div>
 </div>
 
-<script src="script.js"></script> <!-- Подключаем JavaScript -->
+<script src="script.js"></script>
 </body>
 </html>
